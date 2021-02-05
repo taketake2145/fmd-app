@@ -1,0 +1,107 @@
+html,
+body {
+  height: 100%;
+}
+
+// Android Chrome で Pull-to-Refresh を無効にする
+html {
+  overflow-y: hidden;
+}
+
+.another-user .nav__link--edit,
+.another-user .nav__link--check,
+.another-user .nav__link--edit-save,
+.another-user .js-nav-new,
+.another-user .diary-topics, 
+.another-user .diary-edit {
+  visibility: hidden;
+}
+
+.another-user .form-search__link--check,
+.another-user .dialog__nav-login,
+.another-user .dialog__setting-form[data-type="publish-status"],
+.another-user .dialog__setting-form[data-type="label"]{
+  display: none;
+}
+
+body[data-lang="ja"] .en,
+body[data-lang="en"] .ja {
+  display: none;
+}
+
+body[data-font-size="1"] {
+  font-size: 12px;  
+  .diary {
+    line-height: 2;
+  }
+}
+
+body[data-font-size="2"] {
+  font-size: 14px;
+  .service,
+  .diary {
+    line-height: 1.8;
+  }
+}
+
+body[data-font-size="3"] {
+  font-size: 16px;
+  .service,
+  .diary {
+    line-height: 1.6;
+  }
+}
+
+body[data-font-size="4"] {
+  font-size: 18px;
+  .service,
+  .diary {
+    line-height: 1.4;
+  }
+}
+
+body[data-font-size="5"] {
+  font-size: 20px;
+  .service,
+  .diary {
+    line-height: 1.4;
+  }
+  .form-search__condition {
+    font-size: 19px;
+  }
+}
+
+.view-setting .js-player.show,
+.view-search .js-player.show{
+  display: none;
+}
+
+body.view-setting {
+  background: $dialog-setting-bg !important;
+}
+body.view-search {
+  background: $dialog-search-bg !important;
+}
+
+body.view-diary {
+  background: $color-text-bg;
+}
+
+body.view-diary-new {
+  background: $color-edit-bg;
+}
+
+textarea {
+  height: 220px;
+}
+
+@include mq-max($not-laptop-width) {
+  .diary-edit textarea {
+    border-right: none;
+    border-left: none;
+    border-radius: 0;
+  }
+}
+
+
+

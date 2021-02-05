@@ -1,0 +1,21 @@
+/**
+ * ブレイクポイントで指定プロパティの値を切り替える
+ */
+@mixin set-property($property, $size, $size-pc, $break-point: $breakpoint-default){
+  #{$property}: $size;
+  @media screen and (min-width: $break-point) {
+    #{$property}: $size-pc;
+  }
+}
+
+/**
+ * 横幅が指定サイズまではvwで、それ以上のサイズは固定サイズで表示する
+ */
+@mixin set-property-vw($property, $size, $size-pc, $break-point: $breakpoint-default){
+  #{$property}: get-vw($size);
+  @media screen and (min-width: $break-point) {
+    #{$property}: $size-pc;
+  }
+}
+
+

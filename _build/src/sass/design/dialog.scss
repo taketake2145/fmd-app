@@ -1,0 +1,64 @@
+.dialog {
+  max-width: $not-laptop-width;
+  margin: 0 auto;
+  padding: 1.6em 0 100px;
+  box-sizing: border-box;
+  
+  &__setting-form {
+    margin: 0 10px 10px;
+  }
+  
+  &__form-frame {
+    border-radius: $radius-01;
+    background: #fff;
+  }
+  
+  &__publish-status-ex {
+    padding: 12px;
+    border-top: 1px dotted #ccc;
+
+    p {
+      margin: 10px 0 0;
+      line-height: 1.5;
+      font-size: 84%;
+    }
+  }
+  
+  &__flag {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    &-inner {
+      margin: 0 10px 0 0;
+    }
+  }
+  
+  &__label-title {
+    padding: 20px 12px;
+    text-align: center;
+  }
+  
+  &__label-reset-area {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 50px;
+    padding: 16px 12px 0;
+  }
+  
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6em 10px 50px;
+    line-height: 1.2;
+    &-login {
+      margin: 0 10px 0 0;
+    }
+  }
+}
+
+.another-user .dialog__nav {
+  justify-content: flex-end;
+}

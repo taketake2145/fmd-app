@@ -1,0 +1,21 @@
+.js-nav a.hover, 
+.js-player a.hover,
+.js-link-reload.hover,
+.btn.hover {
+  animation: scale-up-down 0.2s forwards;
+}
+
+.share__link {
+  background: #333;
+  span[class^="icon-"] {
+      transition: transform 0.5s;
+  }
+
+  &.hover {
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &.hover span[class^="icon-"] {
+      transform: rotateY(-360deg);
+  }
+}

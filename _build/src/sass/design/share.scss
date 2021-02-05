@@ -1,0 +1,31 @@
+.share {
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 10px 0 0;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #000;
+    color: #fff;
+    
+    &[data-type='twitter'] {
+      background: $twitter;
+      font-size: 14px;
+    }
+    
+    &[data-type='facebook'] {
+      background: $facebook;
+      font-size: 16px;
+    }
+    
+    &[data-type='line'] {
+      background: $line;
+      font-size: 18px;
+    }
+  }
+}
+
+

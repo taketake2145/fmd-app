@@ -1,0 +1,26 @@
+/**
+ * 横幅が指定サイズ以下の場合
+ */
+@mixin mq-max($break-point: $breakpoint-default) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+/**
+ * 横幅が指定サイズ以上の場合
+ */
+@mixin mq-min($break-point: $breakpoint-default) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+/**
+ * 横幅が指定最小サイズ以上指定最大サイズ以下の場合
+ */
+@mixin mq($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}

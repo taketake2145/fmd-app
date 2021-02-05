@@ -1,0 +1,64 @@
+$diary-border: 2px dashed $color-default;
+.diary {
+  // line-height frame.scssで設定しています
+  
+  &__content-edit {
+    
+  }
+  
+  &__content {
+    padding: 2em 10px 100px;
+  }
+  
+  &__unit {
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    margin: 1.6em 0 0;
+    padding: 1.6em 1em 0;
+    border-top: $diary-border;
+    
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  &__unit-title {
+    position: absolute;
+    top: -2px;
+    right: 0;
+    background: $color-default;
+    color: #fff;
+    font-size: 83%;
+    font-weight: normal;
+    padding: 0 10px;
+  }
+  
+  &__unit-content {
+    min-height: 1em;
+    
+    &--en-first {
+      color: #bbb;
+    }
+  }
+  
+  &__sub {
+    margin: 1.6em 0 0;
+    border-top: $diary-border;
+  }
+  
+  &__sub-unit {
+    margin: 10px 0 0;
+    padding: 12px;
+    border: 1px solid #ddd;
+  }
+  
+  &__sub-memo {
+    margin: 10px 0 0;
+    padding: 12px;
+    background: #fff;
+  }
+  
+  
+}

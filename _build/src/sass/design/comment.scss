@@ -1,0 +1,24 @@
+.comment {
+  margin: 1.6em 5px 0;
+  padding: 1.6em 1em;
+  background: #fff;
+  border: 4px dotted $color-link;
+  border-radius: $radius-01;
+  
+  &__title {
+    margin: 0 0 10px;
+    padding: 0 5px;
+    color: $color-link;
+  }
+  
+  &__text {
+    margin: 0 0 10px;
+    padding: 0 5px;
+    line-height: 1.8;
+  }
+  
+  &__submit-btn {
+    margin: 1.6em 10px 0;
+    text-align: right;
+  }
+}

@@ -1,0 +1,64 @@
+.mp-logo {
+  width: 80px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.login h1 a {
+  background-image: none !important;
+}
+
+.login #login_error,
+.login .message,
+.login .success {
+  margin-top: 20px;
+}
+
+.login form {
+  border: none !important;
+  border-radius: 28px;
+}
+
+.login #nav {
+  padding: 24px 0 !important;
+}
+
+html,
+body,
+.mp-login {
+  height: 100%;
+}
+
+#nav {
+  text-align: center;
+}
+
+#nav a {
+  padding: 0 5px;
+}
+
+.mp-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mp-login #login {
+  padding-top: 0;
+  padding-bottom: 50px;
+}
+
+@media (max-height: 700px) {
+  .mp-login {
+    display: block;
+    overflow: auto;
+    padding-top: 50px;
+  }
+}
+@media (orientation: portrait) {
+  .mp-login {
+    display: block;
+    overflow: auto;
+    padding-top: 50px;
+  }
+}

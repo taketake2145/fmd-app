@@ -1,0 +1,62 @@
+// body (base/common.scss)
+$color-default: #222325;
+$color-default-o: #faebd7;
+$color-default-o: #fff;
+$color-link: #ea352d;
+$color-link: #af2c02;
+$color-link: #00547a;
+$color-link-on: darken($color-link, 25%);
+
+// form（base/reset.scss）
+$border-color-form: #ccc;
+$max-width-form: 400px;
+
+// responsive web design breakpoint（setting/**/*.scss）
+$breakpoint-default: 400px;
+
+// SNS color
+$twitter: #1DA1F2;
+$facebook: #3B5998;
+$youtube: #ff0000;
+$instagram: mix($facebook, $youtube);
+$instagram: linear-gradient(to bottom right, #5300c1, #c40094, #e80029);
+$line: #00b900;
+$github: #25292D;
+
+/**
+ * Depend on service
+ * カテゴリ別のCSSは「/setting/var.scss」
+ */
+$not-laptop-width: 800px;
+$not-tablet-width: 760px;
+$smartphone-width: 400px;
+$short-message-width: 640px;
+$color-border: #ccc;
+$transition: 0.3s;
+
+$tab-height: 100px;
+$tab-bar-height: 30px;
+
+$nav-common-height: 50px;
+
+$dialog-setting-bg: #f1f1f1;
+$dialog-search-bg: #fff;
+$color-player: #444;
+$color-link-nav-btn: $color-player;
+$color-comment: #cd9a9d;
+$color-short-message: $color-link;
+
+$color-selected: #fbce00;
+$color-text: #849A74;
+$color-edit: #74949a;
+$color-setting: #cfdad4;
+$color-setting: mix($color-text, $color-edit);
+$color-setting: rgba($color-setting, 0.5);
+
+$color-text-bg: #fbfaf5;
+$color-edit-bg: #f5f6fb;
+
+
+$radius-01: 12px;
+
+

@@ -1,0 +1,35 @@
+/* 共通ヘッダー・フッター */
+#wpfooter,
+#show-settings-link,
+#wp-admin-bar-wp-logo,
+#wp-admin-bar-comments,
+#wp-admin-bar-new-content,
+#contextual-help-link {
+  display: none;
+  visibility: hidden;
+}
+
+/* 共通リスト */
+.count {
+  display: none;
+}
+
+.post-type-post .page-title-action {
+  display: none;
+}
+
+/* プロフィール */
+.profile-php #your-profile > p,
+.profile-php #your-profile > h2,
+.profile-php #your-profile > table {
+  display: none;
+}
+
+.profile-php #your-profile .submit {
+  display: block;
+}
+
+.profile-php #your-profile table.show {
+  display: table;
+}
+

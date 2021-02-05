@@ -1,0 +1,40 @@
+.diary-edit {
+  padding: 0 0 100px;
+  
+  &__list {
+    dt {
+      margin: 1.6em 0 0;
+      padding: 0 10px 5px;
+    }
+  }
+  
+  &__date {
+    padding: 0 0 0 10px;
+    
+    input {
+      font-size: 16px;
+    }
+  }
+  
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.6em 10px 0;
+    
+  }
+  
+  &__btn-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 1.6em 10px 0;
+  }
+  
+  &__btn-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.6em 10px 0;
+  }
+}
