@@ -1,0 +1,30 @@
+{
+  "name": "_build",
+  "version": "1.0.0",
+  "description": "今回のサンプルでは、ファイルを更新するたびに、自動で、下記を処理するようにする。",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "autoprefixer": "^10.1.0",
+    "css-declaration-sorter": "^6.0.2",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-merge-media-queries": "^0.2.1",
+    "gulp-notify": "^3.2.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-uglify": "^3.0.2",
+    "postcss": "^8.2.0"
+  }
+}

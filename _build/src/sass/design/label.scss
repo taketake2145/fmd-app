@@ -1,0 +1,37 @@
+.label {
+  
+  &__unit {
+    border-bottom: 1px dotted #ccc;
+    &:first-child {
+      border-top: 1px dotted #ccc;
+    }
+  }
+  
+  &__unit[data-show="view"] .js-label-edit,
+  &__unit[data-show="edit"] .js-label-view {
+    display: none;
+  }
+  
+  &__view,
+  &__edit {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-height: 50px;
+  }
+  
+  &__title {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  &__action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    min-width: 50px;
+  }
+}

@@ -1,0 +1,8 @@
+*DS_store
+data/*
+functions/*_copy/*
+_build/*_copy/*
+_build/dist/*
+
+*common.uncompressed.css
+*common.uncompressed.js

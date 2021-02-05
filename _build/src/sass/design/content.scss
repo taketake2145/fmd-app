@@ -1,0 +1,49 @@
+.view-diary-focus {
+  .content {
+    height: calc(100% - #{$tab-height - $tab-bar-height} - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  height: calc(100% - #{$tab-height} - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+  overflow: auto;
+
+  &--search,
+  &--menu {
+    display: none;
+    height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+    
+  }
+
+  &--search {
+    background: $dialog-search-bg;
+  }
+
+  &--menu {
+    background: $dialog-setting-bg;
+  }
+
+  &__diary {
+    min-height: calc(100% + 1px);
+  }
+
+  &__view {
+    display: none;
+    opacity: 0;
+    max-width: $not-laptop-width;
+    margin: 0 auto;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50px;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+  }
+}
+

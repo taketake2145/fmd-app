@@ -1,0 +1,150 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+body {
+  word-break: break-word;
+}
+body {
+  word-wrap: break-word;
+}
+
+main,
+article,
+section,
+header,
+footer,
+aside,
+dl,
+dt,
+dd,
+h1, h2, h3, h4, h5, h6,
+p,
+form,
+figcaption {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li{
+  margin-top: 0;
+  margin-right: 0;
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-right: 0;
+  padding-bottom: 0;
+}
+
+img,
+figure{
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  outline: none;
+}
+
+small {
+  display: block;
+  margin: 0;
+  padding: 0;
+  font-style: normal;
+  font-weight: normal;
+}
+
+a,
+label{
+  -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+a,
+label,
+button{
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+select {
+    @include set-property(height, 44px, 30px, $max-width-form);
+    @include set-property(font-size, 16px, 15px, $max-width-form);
+}
+
+.submit,
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+input[type="password"],
+input[type="submit"],
+button,
+textarea {
+  -webkit-appearance: none;
+  display:block;
+  width:100%;  
+  @include set-property(height, 44px, 30px, $max-width-form);
+  padding: 0 0.4rem;
+  border-radius: 4px;
+  border:1px solid $border-color-form;
+  box-sizing:border-box;
+  background: #fff;
+  box-shadow:none;
+  @include set-property(font-size, 16px, 15px, $max-width-form);
+  &:focus{
+    outline: 0; 
+  }
+}
+
+textarea{
+  @include set-property(height, 150px, 200px, $max-width-form);    
+  @include set-property(font-size, 16px, 14px, $max-width-form);
+  padding: 0.4rem;
+}
+
+input:focus:placeholder-shown {
+  color: transparent;
+}
+input:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input:focus::-moz-placeholder {
+  color: transparent;
+}
+input:focus:-ms-input-placeholder {
+  color: transparent;
+}
+input:focus::-ms-input-placeholder {
+  color: transparent;
+}
+
+table{
+  border: none;
+  border-collapse: collapse;
+}
+
+/**
+ * iPhone、AndroidのモバイルWebでの長押しアクションを無効化する
+ * http://paranishian.hateblo.jp/entry/css/mobileweb
+ */
+body, a {
+  
+  // リンク長押しのポップアップを無効化
+  -webkit-touch-callout:none;
+}
+
+a {
+  
+  // テキスト長押しの選択ボックスを無効化
+  -webkit-user-select:none;
+}
+

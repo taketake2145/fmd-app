@@ -1,0 +1,31 @@
+.form-search {
+  margin: 0 5px;
+  padding: 1.6em 8px;
+  border-radius: $radius-01;
+  background: $dialog-setting-bg;
+  
+  &__condition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     margin: 1.6em 10px 0;
+  }
+  
+  &__link {
+    &:last-child {
+      margin: 0 0 0 10px;
+    }
+    color: #777;
+    &.selected {
+      background-color: #777;
+      color: #fff;
+    }
+  }
+  
+  &__search-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.6em 10px 0;
+  }
+}

@@ -1,0 +1,12 @@
+@mixin rotate {
+  span[class^="icon-"] {
+    transition: transform 0.5s;
+  }
+  &:hover,
+  &.hover {
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    span {
+      transform: rotateY(-360deg);
+    }
+  }  
+}

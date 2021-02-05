@@ -1,0 +1,9 @@
+.dl-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 50px;
+  padding: 12px;
+  border-radius: $radius-01;
+  background: #fff;
+}

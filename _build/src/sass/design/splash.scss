@@ -1,0 +1,46 @@
+.js-opening > * {
+  opacity: 0;
+  &.splash {
+    opacity: 1;
+  } 
+}
+
+
+.splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+
+  width: 100%;
+  height: 100%;
+  
+  &__bg {
+    position: fixed;
+    top: -50%;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 200%;
+    background: #fff;
+  }
+  
+  &__title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  
+  img {
+    width: 100px;
+    height: auto;
+    opacity: 0;
+  }
+}
