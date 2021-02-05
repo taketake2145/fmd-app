@@ -22,7 +22,7 @@ const voicerPlusMinus = (t, v) => {
       }
       num = voicer[t]*10;
       if (num <= 1) {
-        voicer[t] = 0;
+        voicer[t] = 0.1;
         is_minus = false;
       } else if (num >= 9) {
         voicer[t] = 1;
