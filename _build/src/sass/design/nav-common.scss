@@ -8,10 +8,22 @@
   border-top-right-radius: 0;
 }
 
+.nav-common .js-link-edit {
+  display: none;
+}
+
+.nav-common--search {
+  .js-link-edit {
+    display: flex;    
+  }
+  .js-link-setting {
+    display: none;
+  }
+}
+
 
 .nav-common {
   font-size: 16px;
-  
   
   &__link {
     position: fixed;

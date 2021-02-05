@@ -79,7 +79,12 @@ const searchDiary = (is_reset) => {
         // まるっと暗記以外はタブを切り替える
         if (DIARY_VIEW !== "learning") {
           DIARY_VIEW = (_body.hasClass("view-diary-new"))? "edit": "feedback";
-          _body.removeClass("view-diary-new").addClass("view-diary");
+          
+          if (_body.hasClass("view-diary-new")) {
+            _body.removeClass("view-diary-new").addClass("view-diary");
+            $(".js-nav-common").addClass("nav-common--search")
+          }
+          
           changeDiaryMode();          
         }
         
