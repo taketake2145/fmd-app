@@ -26,6 +26,7 @@ const voicerInit = (func) => {
     voicer.speech;  // {object} 音声情報
     voicer.changeVoice;  // {function} 名前を変更した際に処理を実行する場合に利用する関数名
     voicer.settiming;  // オートプレイ時のsettimeout監視用
+    voicer.status_autoplay;  // {string} all|one|stop
     voicer.is_autoplay;  // {boolean} オートプレイ設定中かどうか
     voicer.is_playing;  // {boolean} 再生中かどうか
     voicer.is_pausing;  // {boolean} 一時停止中かどうか

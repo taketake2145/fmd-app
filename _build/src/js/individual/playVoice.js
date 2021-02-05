@@ -70,7 +70,14 @@ const playVoice = (is_prev) => {
 
               // 再生中で、オートプレイ設定中で、前の日記があるか判別する
               if (voicer.is_playing && voicer.is_autoplay) {
-                changeDiary("prev");
+                
+                // すべてか現在表示中のリピートか判別する
+                if (voicer.status_autoplay === "all") {
+                  changeDiary("prev");                    
+                } else {
+                  setDiary(); 
+                }
+                
                 
                 // 次の日記がある場合
                 /*

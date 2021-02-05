@@ -4,6 +4,8 @@
  */
 const setVoice = () => {
   
+  const _link_player_loop = $(".js-link-player-loop");
+  
   // ローカルストレージを反映させる
   if (LS.voicer) {
     if (LS.voicer.volume) voicer.volume = LS.voicer.volume;
@@ -11,7 +13,10 @@ const setVoice = () => {
     if (LS.voicer.pitch) voicer.pitch = LS.voicer.pitch;
     if (LS.voicer.lang) voicer.lang = LS.voicer.lang;
     if (LS.voicer.name) voicer.name = LS.voicer.name;
-    if (LS.voicer.autoplay) voicer.is_autoplay = (LS.voicer.autoplay === "yes")? true: false;
+    if (LS.voicer.autoplay) {
+      voicer.is_autoplay = (LS.voicer.autoplay === "stop")? false: true;
+      voicer.status_autoplay = LS.voicer.autoplay;
+    }
   } else {
     LS.voicer = {};
   }
@@ -25,8 +30,10 @@ const setVoice = () => {
   setVoicePlusMinus($(".js-link-player-label .current").attr("data-type"));
   
   // オートプレイをセットする
-  if (voicer.is_autoplay) {
-    $(".js-link-player-loop").addClass("active");
+  if (voicer.status_autoplay === "all") {
+    _link_player_loop.addClass("active");
+  } else if (voicer.status_autoplay === "one") {
+    _link_player_loop.addClass("active").addClass("one");
   }
   
   // voiceが変更した際
@@ -51,19 +58,29 @@ const setVoice = () => {
   }
 
   // リンク オート再生設定を変更する
-  $(".js-link-player-loop").on(eventstart, function () {
+  _link_player_loop.on(eventstart, function () {
     let _this = $(this),
         temp_ls;
-
-    if (_this.hasClass("active")) {
-      voicer.is_autoplay = false;
-      _this.removeClass("active");
-    } else {
-      voicer.is_autoplay = true;
-      _this.addClass("active");
+    
+    switch (voicer.status_autoplay) {
+      case "all":
+        voicer.is_autoplay = true;
+        voicer.status_autoplay = 'one';
+        _this.addClass("one");
+        break;
+      case "one":
+        voicer.is_autoplay = false;
+        voicer.status_autoplay = 'stop';
+        _this.removeClass("active").removeClass("one");
+        break;
+      default:
+        voicer.is_autoplay = true;
+        voicer.status_autoplay = 'all';
+        _this.addClass("active");
+      
     }
     
-    LS.voicer.autoplay = (voicer.is_autoplay === true)? "yes": "no";
+    LS.voicer.autoplay = voicer.status_autoplay;
     saveLS();
     
     return false;
