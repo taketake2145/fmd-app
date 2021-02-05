@@ -25,7 +25,7 @@ const playVoice = (is_prev) => {
       if (voicer.speech) {
         
         // オートプレイ設定中か判別する
-        if (voicer.is_autoplay && !voicer.is_plusminus) {
+        if (voicer.is_autoplay && !voicer.is_setting_change) {
           voicer.is_pausing = true;
           speechSynthesis.pause(voicer.speech);  // 一時停止する
         } else {
@@ -49,7 +49,9 @@ const playVoice = (is_prev) => {
       } else {
         
         // まずはキャンセル
+        speechSynthesis.cancel(voicer.speech);
         speechSynthesis.cancel();
+        voicer.speech = null;
 
         // text()ではなく html()。<br>は改行コードにすることで音声の区切りをつける
         voice_text = _voice_diary.html();

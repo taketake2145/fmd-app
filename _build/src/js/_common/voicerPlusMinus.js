@@ -9,7 +9,6 @@ const voicerPlusMinus = (t, v) => {
   let diff = 0,
       is_plus = true,
       is_minus = true,
-      is_limit = true,
       num;
   
   
@@ -66,10 +65,10 @@ const voicerPlusMinus = (t, v) => {
    * 再生中に値が変更（プラスマイナスタップ）の場合は、リアルタイム反映
    * 再生中は値が変更されない、一時停止では設定が反映されないので注意が必要
    */
-  if (voicer.is_playing && (((v === "minus") && is_minus) || ((v === "plus") && is_plus))) {
-    voicer.is_plusminus = true;
+  if (voicer.is_playing) {
+    voicer.is_setting_change = true;
     playVoice();
-    voicer.is_plusminus = false;
+    voicer.is_setting_change = false;
   }
   
   return {
