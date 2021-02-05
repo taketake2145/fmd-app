@@ -288,6 +288,7 @@ $(function(){
   }
   
   // リンク処理
-  setHover($(".js-nav a, .js-player a, .btn, .share__link, .js-link-reload"));
+  setHover($(".js-nav a, .btn, .share__link, .js-link-reload"));
+  setHover($(".js-player a").not(".js-link-player-label"));
 });
 
