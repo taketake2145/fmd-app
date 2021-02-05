@@ -21,20 +21,20 @@ const playVoice = (is_prev) => {
     } else if (voicer.is_playing) {  // 再生中か確認する
       voicer.is_playing = false;
       _voice_btn.removeClass("animation-blinker");
-
-      // オートプレイ設定中か判別する
-      if (voicer.is_autoplay) {
-        if (voicer.speech) {
+      
+      if (voicer.speech) {
+        
+        // オートプレイ設定中か判別する
+        if (voicer.is_autoplay && !voicer.is_plusminus) {
           voicer.is_pausing = true;
           speechSynthesis.pause(voicer.speech);  // 一時停止する
-        }
-      } else {
-        if (voicer.speech) {
+        } else {
           voicer.is_pausing = false;
           speechSynthesis.cancel(voicer.speech);  // 停止する
           voicer.speech = null;
         }
       }
+
     } else {
       voicer.is_playing = true;
       _voice_btn.addClass("animation-blinker");
@@ -70,7 +70,14 @@ const playVoice = (is_prev) => {
 
               // 再生中で、オートプレイ設定中で、前の日記があるか判別する
               if (voicer.is_playing && voicer.is_autoplay) {
-                changeDiary("prev");
+                
+                // すべてか現在表示中のリピートか判別する
+                if (voicer.status_autoplay === "all") {
+                  changeDiary("prev");                    
+                } else {
+                  setDiary(); 
+                }
+                
                 
                 // 次の日記がある場合
                 /*
