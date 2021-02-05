@@ -65,10 +65,9 @@ const voicerPlusMinus = (t, v) => {
    * 再生中に値が変更（プラスマイナスタップ）の場合は、リアルタイム反映
    * 再生中は値が変更されない、一時停止では設定が反映されないので注意が必要
    */
-  if (voicer.is_playing) {
-    voicer.is_setting_change = true;
+  voicer.is_setting_change = true;
+  if (voicer.is_playing) {    
     playVoice();
-    voicer.is_setting_change = false;
   }
   
   return {

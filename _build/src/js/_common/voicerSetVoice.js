@@ -113,10 +113,9 @@ const voicerSetVoice = (func) => {
         i;
     
     // 再生中の音声があればストップする（リアルタイム反映ができないため）
+    voicer.is_setting_change = true;
     if (voicer.is_playing) {
-      voicer.is_setting_change = true;
       playVoice();
-      voicer.is_setting_change = false;      
     }
     
     $(".bugfix-safari-hide option", tgt_voice).unwrap();  // 名前をすべて表示する
