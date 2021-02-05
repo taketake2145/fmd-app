@@ -209,6 +209,7 @@ $(function(){
       DIARY_VIEW = DIARY_VIEW_EDIT;
       changeDiaryMode();
       $("body").removeClass("view-diary").addClass("view-diary-new");
+      $(".js-nav-common").removeClass("nav-common--search");
       if (voicer.is_playing) playVoice();
       adjustFooterText();
       return false;

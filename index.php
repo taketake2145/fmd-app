@@ -554,8 +554,9 @@ if ($user_id !== "" || $login_id > 0) {
       </div>      
     </nav>
     
-    <nav class="nav-common">
+    <nav class="nav-common js-nav-common">
       <a class="nav-common__link nav-common__link--left js-link-setting"><span class="icon-cog"></span></a>
+      <a class="nav-common__link nav-common__link--left js-link-edit"><span class="icon-close"></span></a>
       <a class="nav-common__link nav-common__link--right js-link-search"><span class="icon-search"></span></a>
     </nav>
     
