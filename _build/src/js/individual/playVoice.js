@@ -41,10 +41,17 @@ const playVoice = (is_prev) => {
 
       // すでに再生中か判別する
       if (voicer.speech) {
-        if (voicer.is_pausing) {
-          speechSynthesis.resume(voicer.speech);  // 再開する
-        } else {
+        
+        // 設定か音声が変更しているか判別する
+        if (voicer.is_setting_change) {
           speechSynthesis.speak(voicer.speech);  // はじめから再生する
+          voicer.is_setting_change = false;
+        } else {
+          if (voicer.is_pausing) {
+            speechSynthesis.resume(voicer.speech);  // 再開する
+          } else {
+            speechSynthesis.speak(voicer.speech);  // はじめから再生する            
+          }
         }
       } else {
         
