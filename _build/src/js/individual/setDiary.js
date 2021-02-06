@@ -11,10 +11,12 @@ let setDiary = (is_prevnext) => {
       _diary_feedback = $(".js-diary-view[data-type='feedback']"),
       _diary_learning = $(".js-diary-view[data-type='learning']"),
       _diary_memo = $(".js-diary-view[data-type='memo']"),
+      _diary_another_title = $(".js-diary-another-title"),
       _link_check = $(".js-link-check");
       
   let d = DIARY[DIARY_NO],    
-      text = '';
+      text = '',
+      is_feedback_another = false;
   
   
   // データがあるか判別する
@@ -82,16 +84,24 @@ let setDiary = (is_prevnext) => {
   } else {      
 
     if (d.diary_proofreading_01 != "" && d.diary_fix != d.diary_proofreading_01 && text != "") {
-      $(".js-diary-proofreading-01", _diary_feedback).html(d.diary_proofreading_01).show();    
+      $(".js-diary-proofreading-01", _diary_feedback).html(d.diary_proofreading_01).show();
+      is_feedback_another = true;
     } else {
       $(".js-diary-proofreading-01", _diary_feedback).html("").hide(); 
     }
 
     if (d.diary_proofreading_02 != "" && d.diary_proofreading_02 != d.diary_proofreading_01 && d.diary_fix != d.diary_proofreading_02 && text != "") {
-      $(".js-diary-proofreading-02", _diary_feedback).html(d.diary_proofreading_02).show();    
+      $(".js-diary-proofreading-02", _diary_feedback).html(d.diary_proofreading_02).show();
+      is_feedback_another = true;
     } else {
       $(".js-diary-proofreading-02", _diary_feedback).html("").hide(); 
     }
+  }
+  
+  if (is_feedback_another) {
+    _diary_another_title.show();
+  } else {
+    _diary_another_title.hide();
   }
   
   // learning
