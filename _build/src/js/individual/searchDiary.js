@@ -76,7 +76,7 @@ const searchDiary = (is_reset) => {
           setMessage("zero_hit");
         }
         
-        // まるっと暗記以外はタブを切り替える
+        // まるっと暗記以外はタブ切り替えの準備をする
         if (DIARY_VIEW !== "learning") {
           DIARY_VIEW = (_body.hasClass("view-diary-new"))? "edit": "feedback";
           
@@ -84,11 +84,10 @@ const searchDiary = (is_reset) => {
             _body.removeClass("view-diary-new").addClass("view-diary");
             $(".js-nav-common").addClass("nav-common--search")
           }
-          
-          changeDiaryMode();          
         }
         
-        // データをセットする
+        // タブを切り替え、データをセットする
+        changeDiaryMode();
         setDiary();
         
         _link_search.removeClass("animation-blinker");  // ボタンのブリンカーを解除する
