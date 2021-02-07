@@ -16,15 +16,15 @@ const searchDiary = (is_reset) => {
       is_shuffle = (LS.search_shuffle && LS.search_shuffle === true)? true: false,
       can_search = false,
       temp_diary = [],
-      temp_diary_no = 0;
-  
+      temp_diary_no = 0,
+      voicer_playing = voicer.is_playing;
+
+  // 音声をストップする
+  voice('stop');
   
   // 通信中ではないか判別する
   if (!IS_CONNECTING) {
-    
-    // 音声をストップする
-    voice("stop");
-    
+        
     // 検索条件を確認する
     if (is_reset === true || (val_fw == "" && !is_checked && !is_shuffle)) {
       can_search = true;
@@ -61,11 +61,12 @@ const searchDiary = (is_reset) => {
       _link_search.addClass("animation-blinker");
       
       getAjaxDiary(obj, function () {
-
         let is_zero = false;
                 
         IS_CONNECTING = false;
         $(".js-short-message").hide();
+        
+        voicer.is_playing = voicer_playing;
         
         if (DIARY.length === 0) {
           is_zero = true;
@@ -81,7 +82,11 @@ const searchDiary = (is_reset) => {
         }
         
         // タブを切り替える
-        DIARY_VIEW = "feedback";
+        if (voicer.is_playing && DIARY_VIEW === "learning") {
+          
+        } else {
+          DIARY_VIEW = "feedback";          
+        }
         changeDiaryMode();
         
         // データをセットする        
