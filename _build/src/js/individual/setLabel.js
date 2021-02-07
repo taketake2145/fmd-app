@@ -163,7 +163,7 @@ const setLabel = () => {
             
     if ($(this).prop("checked") === true) {
       $(".js-diary-edit-unit[data-type='" + view_type + "']").show();
-      delete LS.label_hide[view_type];
+      LS.label_hide[view_type] = false;
     } else {
       $(".js-diary-edit-unit[data-type='" + view_type + "']").hide();
       LS.label_hide[view_type] = true;
