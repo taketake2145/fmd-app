@@ -119,8 +119,11 @@ const playVoice = (is_prev) => {
               }    
             }
           });
-        } else {
+        } else if (voicer.is_autoplay && voicer.status_autoplay === "all"){ // 全オートプレイ中か判別する
           changeDiary("prev");
+        } else {
+          voicer.is_playing = false;
+          _voice_btn.removeClass("animation-blinker");
         }
       }
     }
