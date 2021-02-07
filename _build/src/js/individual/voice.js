@@ -38,7 +38,16 @@ const voice = (action) => {
           voicer.speech.voice = voicer.voice;
         }
         
-        if (voicer.is_playing) voice('play');
+        if (voicer.is_playing) {
+          voicer.is_changing = true;
+          
+          // MEMO: setTimeout にするのは設定変更後にiPhoneで再生ができないため
+          if (voicer.settiming) clearTimeout(voicer.settiming);
+          voicer.settiming = setTimeout(function () {
+            voice('play');
+          }, 350);          
+        }
+        
         break;
       case 'play':
         voicer.is_playing = true;
@@ -80,24 +89,35 @@ const voice = (action) => {
                   lang: voicer.lang,
                   voice: voicer.voice,
                   func: function () {
-
-                    // 再生中で、オートプレイ設定中で、前の日記があるか判別する
-                    if (voicer.is_playing && voicer.is_autoplay) {
-
-                      // すべてか現在表示中のリピートか判別する
-                      if (voicer.status_autoplay === "all") {
-                        changeDiary("prev");                    
+                                        
+                    // MEMO: 音声終了時の解釈がブラウザで異なる
+                    // 音声途中でも音声が停止したときに発火（Chrome)
+                    // 音声が最後まで再生したときに発火（iOS）
+                    setTimeout(function () {
+                                                                  
+                      if (voicer.is_changing && !IS_IOS) {
+                        voicer.is_changing = false;
                       } else {
-                        voice('play');
+
+                        // 再生中で、オートプレイ設定中か判別する
+                        if (voicer.is_playing && voicer.is_autoplay) {
+
+                          // すべてか現在表示中のリピートか判別する
+                          if (voicer.status_autoplay === "all") {
+                            changeDiary("prev");
+                          } else {
+                            voice('play');
+                          }
+                        } else {
+                          voice('stop');
+                        }    
                       }
-                    } else {
-                      voice('stop');
-                    }    
+                    }, 350);
                   }
                 });                
               }
             }, 1000);
-          } else if (voicer.is_autoplay && voicer.status_autoplay === "all"){  // 全オートプレイ中か判別する
+          } else if (voicer.is_autoplay && voicer.status_autoplay === "all") {  // 全オートプレイモードか判別する
             changeDiary("prev");
           } else {
             voice('stop');
