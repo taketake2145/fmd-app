@@ -83,7 +83,7 @@
     &--voice {
       padding: 2px;
       box-sizing: border-box;
-      border-radius: 50%;     
+      border-radius: $btn-radius;     
       background: #fff;
       
       span {
@@ -93,7 +93,7 @@
         width: 100%;
         height: 100%;
         border: 2px solid $color-player;
-        border-radius: 50%;
+        border-radius: $btn-radius;
         box-sizing: border-box;
         background: #f0f0f0;
         color: $color-player;

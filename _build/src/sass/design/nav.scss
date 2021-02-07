@@ -140,12 +140,12 @@
     .nav__link {
       margin: 0 10px;
       box-sizing: border-box;
-      border-radius: 50%;
+      border-radius: $btn-radius;
       background: #fff;
       text-align: center;
       span {
         border: 2px solid #ddd;
-        border-radius: 50%;
+        border-radius: $btn-radius;
         background: #f7f9f8;
         color: #ddd;
         transition: $transition;

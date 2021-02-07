@@ -265,7 +265,7 @@ if ($user_id !== "" || $login_id > 0) {
             <span class="ja">まるっと暗記</span>
           </h1>
           <div class="diary__content">
-            <div class="js-diary-final"></div>
+            <div class="diary__learning js-diary-final"></div>
             <div class="diary__sub-memo js-diary-unit">
               <p class="js-diary-vocabulary"></p>
             </div>
