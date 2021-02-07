@@ -59,6 +59,15 @@ const voice = (action) => {
           // テキストがあるか判別する
           if (voice_text != "") {
             
+            // MEMO はじめの再生時、setTimeoutを使っての再生は有効にならないため
+            if (!voicer.is_not_first) {
+              voicer.is_not_first = true;
+              voicerPlay({
+                text: "",
+                volume: 0
+              });
+            }
+            
             // 音声を再生する
             if (voicer.settiming) clearTimeout(voicer.settiming);
             voicer.settiming = setTimeout(function () {
