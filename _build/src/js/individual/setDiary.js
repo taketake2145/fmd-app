@@ -151,20 +151,8 @@ let setDiary = (is_prevnext) => {
     $(".js-share-url").val("");
   }
   
-  // 再生中があれば、停止する
-  if (voicer.speech) {
-    speechSynthesis.cancel(voicer.speech);
-    voicer.speech = null;
-  }
-  
-  // 音声再生する
-  if ($("body").hasClass("view-diary") && voicer.is_playing) {
-    
-    if (voicer.settiming) clearTimeout(voicer.settiming);
-    voicer.settiming = setTimeout(function () {
-      playVoice(true);
-    }, 1000);
-  }
+  // 音声をリセットする
+  voice("reset");
   
   // 前後チェックを行う
   if (is_prevnext === true) {

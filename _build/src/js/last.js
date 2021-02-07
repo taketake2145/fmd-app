@@ -210,7 +210,7 @@ $(function(){
       changeDiaryMode();
       $("body").removeClass("view-diary").addClass("view-diary-new");
       $(".js-nav-common").removeClass("nav-common--search");
-      if (voicer.is_playing) playVoice();
+      voice('stop');
       adjustFooterText();
       return false;
     });

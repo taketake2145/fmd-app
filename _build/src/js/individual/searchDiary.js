@@ -22,10 +22,8 @@ const searchDiary = (is_reset) => {
   // 通信中ではないか判別する
   if (!IS_CONNECTING) {
     
-    // 再生中の音声があればストップする（リアルタイム反映ができないため）
-    if (voicer.is_playing) {
-      playVoice();
-    }
+    // 音声をストップする
+    voice("stop");
     
     // 検索条件を確認する
     if (is_reset === true || (val_fw == "" && !is_checked && !is_shuffle)) {
@@ -76,18 +74,17 @@ const searchDiary = (is_reset) => {
           setMessage("zero_hit");
         }
         
-        // まるっと暗記以外はタブ切り替えの準備をする
-        if (DIARY_VIEW !== "learning") {
-          DIARY_VIEW = (_body.hasClass("view-diary-new"))? "edit": "feedback";
-          
-          if (_body.hasClass("view-diary-new")) {
-            _body.removeClass("view-diary-new").addClass("view-diary");
-            $(".js-nav-common").addClass("nav-common--search")
-          }
+        // 新規モードの場合は、ノーマルモードに変更する
+        if (_body.hasClass("view-diary-new")) {
+          _body.removeClass("view-diary-new").addClass("view-diary");
+          $(".js-nav-common").addClass("nav-common--search")
         }
         
-        // タブを切り替え、データをセットする
+        // タブを切り替える
+        DIARY_VIEW = "feedback";
         changeDiaryMode();
+        
+        // データをセットする        
         setDiary();
         
         _link_search.removeClass("animation-blinker");  // ボタンのブリンカーを解除する

@@ -29,8 +29,7 @@ const voicerInit = (func) => {
     voicer.status_autoplay;  // {string} all|one|stop
     voicer.is_autoplay;  // {boolean} オートプレイ設定中かどうか
     voicer.is_playing;  // {boolean} 再生中かどうか
-    voicer.is_pausing;  // {boolean} 一時停止中かどうか
-    voicer.is_change_setting;  // {boolean} プレイヤーの設定、もしくは声が変更したかどうか 
+
 
     // 音声情報をマークアップする
     voicerSetVoice(func);
