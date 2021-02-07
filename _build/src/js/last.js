@@ -185,17 +185,8 @@ $(function(){
       if (!IS_CONNECTING) {
 
         if (DIARY_VIEW != "new") {
-          
-          // オートプレイ中は二度changeDiaryが発火するのを防止する
-          if (is_autoplay) {
-            voicer.is_autoplay = false;
-            changeDiary($(this).data("type"));
-            setTimeout(function () {
-              voicer.is_autoplay = true;
-            }, 300);
-          } else {
-            changeDiary($(this).data("type"));
-          }
+          voicer.is_changing = true;  // memo: Androidでendが発火するのを防ぐ対応
+          changeDiary($(this).data("type"));
         }
       } else {
         setMessage("connecting", 10000);
@@ -210,7 +201,7 @@ $(function(){
       changeDiaryMode();
       $("body").removeClass("view-diary").addClass("view-diary-new");
       $(".js-nav-common").removeClass("nav-common--search");
-      if (voicer.is_playing) playVoice();
+      voice('stop');
       adjustFooterText();
       return false;
     });

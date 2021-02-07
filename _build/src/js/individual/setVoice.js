@@ -119,10 +119,7 @@ const setVoice = () => {
   
   // リンク 再生/停止
   $(".js-link-voice").on("click", function () {
-    
-    if (DIARY_VIEW === "learning") {
-      playVoice();
-    }
+    voice('toggle');
     return false;
   });
   

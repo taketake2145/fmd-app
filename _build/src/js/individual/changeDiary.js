@@ -54,17 +54,9 @@ const changeDiary = function (prevnext, num) {
       });    
     } else if (voicer.is_playing) {  // 音声再生中か確認する
 
-      // 一旦、再生を止める
-      voicer.is_playing = false;
-      voicer.is_pausing = false;
-      _voice_btn.removeClass("animation-blinker");
-
       if (voicer.is_autoplay) {  // リピート再生中は最初に戻る
         
         if (isViewDiary(0, "learning")) {
-          voicer.is_playing = true;
-          voicer.is_pausing = true;
-          _voice_btn.addClass("animation-blinker");
           DIARY_NO = 0;
           setDiary(true);
         } else {

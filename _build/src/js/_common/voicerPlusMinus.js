@@ -62,10 +62,9 @@ const voicerPlusMinus = (t, v) => {
     // default なし
   }
     
-  // 値が変更された場合
-  if (voicer.is_playing && is_changing) {
-    voicer.is_setting_change = true;
-    playVoice();
+  // 設定値が変更された場合
+  if (is_changing) {  
+    voice('setting');  // 音声設定を更新する
   }
   
   return {

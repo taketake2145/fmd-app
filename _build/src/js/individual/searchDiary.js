@@ -16,17 +16,15 @@ const searchDiary = (is_reset) => {
       is_shuffle = (LS.search_shuffle && LS.search_shuffle === true)? true: false,
       can_search = false,
       temp_diary = [],
-      temp_diary_no = 0;
-  
+      temp_diary_no = 0,
+      voicer_playing = voicer.is_playing;
+
+  // 音声をストップする
+  voice('stop');
   
   // 通信中ではないか判別する
   if (!IS_CONNECTING) {
-    
-    // 再生中の音声があればストップする（リアルタイム反映ができないため）
-    if (voicer.is_playing) {
-      playVoice();
-    }
-    
+        
     // 検索条件を確認する
     if (is_reset === true || (val_fw == "" && !is_checked && !is_shuffle)) {
       can_search = true;
@@ -63,11 +61,12 @@ const searchDiary = (is_reset) => {
       _link_search.addClass("animation-blinker");
       
       getAjaxDiary(obj, function () {
-
         let is_zero = false;
                 
         IS_CONNECTING = false;
         $(".js-short-message").hide();
+        
+        voicer.is_playing = voicer_playing;
         
         if (DIARY.length === 0) {
           is_zero = true;
@@ -76,18 +75,21 @@ const searchDiary = (is_reset) => {
           setMessage("zero_hit");
         }
         
-        // まるっと暗記以外はタブ切り替えの準備をする
-        if (DIARY_VIEW !== "learning") {
-          DIARY_VIEW = (_body.hasClass("view-diary-new"))? "edit": "feedback";
-          
-          if (_body.hasClass("view-diary-new")) {
-            _body.removeClass("view-diary-new").addClass("view-diary");
-            $(".js-nav-common").addClass("nav-common--search")
-          }
+        // 新規モードの場合は、ノーマルモードに変更する
+        if (_body.hasClass("view-diary-new")) {
+          _body.removeClass("view-diary-new").addClass("view-diary");
+          $(".js-nav-common").addClass("nav-common--search")
         }
         
-        // タブを切り替え、データをセットする
+        // タブを切り替える
+        if (voicer.is_playing && DIARY_VIEW === "learning") {
+          
+        } else {
+          DIARY_VIEW = "feedback";          
+        }
         changeDiaryMode();
+        
+        // データをセットする        
         setDiary();
         
         _link_search.removeClass("animation-blinker");  // ボタンのブリンカーを解除する

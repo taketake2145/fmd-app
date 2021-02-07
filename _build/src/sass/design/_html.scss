@@ -95,6 +95,7 @@ textarea {
   height: 220px;
 }
 
+/*
 @include mq-max($not-laptop-width) {
   .diary-edit textarea {
     border-right: none;
@@ -102,6 +103,6 @@ textarea {
     border-radius: 0;
   }
 }
-
+*/
 
 

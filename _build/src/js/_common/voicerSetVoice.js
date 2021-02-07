@@ -108,15 +108,12 @@ const voicerSetVoice = (func) => {
   const voicerSetSelect = () => {
     let selected_lang,
         val_voice,
-        lang = '',
-        voice = '',
+        voice_lang = '',
+        voice_name = '',
         i;
     
-    // 再生中の音声があればストップする（リアルタイム反映ができないため）    
-    if (voicer.is_playing) {
-      voicer.is_setting_change = true;
-      playVoice();
-    }
+    // 音声設定を更新する
+    if (voice) voice('setting');
     
     $(".bugfix-safari-hide option", tgt_voice).unwrap();  // 名前をすべて表示する
     
@@ -125,26 +122,26 @@ const voicerSetVoice = (func) => {
       tgt_voice.val("all");  // 名前を選択をリセットする
       tgt_lang.val("all");  // 名前を選択をリセットする
     } else {
-      lang = voicer.voice.lang;
-      voice = voicer.voice.name;
+      voice_lang = voicer.voice.lang;
+      voice_name = voicer.voice.name;
       
-      selected_lang = $("option." + lang, tgt_voice);
-      tgt_lang.val(lang);
+      selected_lang = $("option." + voice_lang, tgt_voice);
+      tgt_lang.val(voice_lang);
       
-      $(".js-speech-lang-flag[data-type='" + lang + "']").addClass("selected");
+      $(".js-speech-lang-flag[data-type='" + voice_lang + "']").addClass("selected");
       
       // 名前を全非表示する（Hackの都合で、一旦、すべて表示後に非表示にする必要あり
       $("option", tgt_voice).wrap('<span class="bugfix-safari-hide">');
       selected_lang.unwrap();  // 選択した言語の名前を表示する
       
       // 名前が一致するか判別する
-      if ($("option." + lang + "[value='" + voice + "']", tgt_voice).length === 1) {
-        tgt_voice.val(voice);
+      if ($("option." + voice_lang + "[value='" + voice_name + "']", tgt_voice).length === 1) {
+        tgt_voice.val(voice_name);
       } else {
 
         // 選択した言語の名前が複数あるか判別する
         if (selected_lang.length > 1) {
-          voicer.voice = voicerGetVoice(lang);
+          voicer.voice = voicerGetVoice(voice_lang);
           tgt_voice.val(voicer.voice.name);
         } else {
           val_voice = selected_lang.val();  // 名前を取得する          

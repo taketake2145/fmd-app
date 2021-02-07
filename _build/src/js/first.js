@@ -7,6 +7,10 @@
 // http://shanabrian.com/web/javascript/is-touch-device.php
 const IS_TOUCH = (('ontouchstart' in window && 'ontouchend' in window) || navigator.msPointerEnabled)? true : false;
 
+// iOS判定 https://qiita.com/kon_yu/items/f295033107089dd6468d
+const UA = navigator.userAgent;
+const IS_IOS = (/iPad|iPhone|iPod/.test(UA)) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)? true : false;
+
 const eventstart = (IS_TOUCH)? 'touchstart': 'mousedown';
 const eventmove = (IS_TOUCH)? 'touchmove': 'mousemove';
 const eventend = (IS_TOUCH)? 'touchend': 'click';
