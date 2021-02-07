@@ -50,7 +50,7 @@ const getText = (code) => {
     case "delete_error_01":
     case "delete_error_02":
       str = (LANG === "ja")? 
-        "削除できなかったので、しばらくしてからもう一度お試しください。": 
+        "削除できませんでした。もう一度お試しください。": 
         "Try again after because it was saved.";
       break;    
     case "delete_error_network":
