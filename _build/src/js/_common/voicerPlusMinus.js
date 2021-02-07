@@ -1,7 +1,7 @@
 /**
  * プラスマイナス
  *
- * @param string* t* volume|rate|pitch
+ * @param {string*} t* volume|rate|pitch
  * @param {string|NULL} v plus|minus|NULL
  * @return {object}
  */
@@ -9,6 +9,7 @@ const voicerPlusMinus = (t, v) => {
   let diff = 0,
       is_plus = true,
       is_minus = true,
+      is_changing = (typeof v === "string")? true: false,
       num;
   
   
@@ -60,13 +61,10 @@ const voicerPlusMinus = (t, v) => {
 
     // default なし
   }
-  
-  /*
-   * 再生中に値が変更（プラスマイナスタップ）の場合は、リアルタイム反映
-   * 再生中は値が変更されない、一時停止では設定が反映されないので注意が必要
-   */
-  voicer.is_setting_change = true;
-  if (voicer.is_playing) {    
+    
+  // 値が変更された場合
+  if (voicer.is_playing && is_changing) {
+    voicer.is_setting_change = true;
     playVoice();
   }
   

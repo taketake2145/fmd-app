@@ -228,15 +228,15 @@ if ($user_id !== "" || $login_id > 0) {
             </section>
             <section class="diary__unit js-diary-unit js-diary-fix-area">
               <h1 class="diary__unit-title">
-                <span class="en">Translation</span>
-                <span class="ja">アフター</span>
+                <span class="en">Finally</span>
+                <span class="ja">最終</span>
               </h1>
               <p class="diary__unit-content js-diary-fix"></p>
             </section>
             <section class="diary__unit js-diary-unit">
               <h1 class="diary__unit-title">
                 <span class="en">On my own</span>
-                <span class="ja">ビフォー</span>
+                <span class="ja">自力</span>
               </h1>
               <p class="diary__unit-content diary__unit-content--en-first js-diary-en-first"></p>
             </section>
@@ -247,10 +247,16 @@ if ($user_id !== "" || $login_id > 0) {
               </h1>
               <p class="diary__unit-content js-diary-vocabulary"></p>
             </section>          
-            <div class="diary__sub">
-              <p class="diary__sub-unit js-diary-proofreading-01"></p>
-              <p class="diary__sub-unit js-diary-proofreading-02"></p>
-            </div>
+            <section class="diary__unit diary__unit--another">
+              <h1 class="diary__unit-title js-diary-another-title">
+                <span class="en">Anotehr</span>
+                <span class="ja">別バージョン</span>
+              </h1>
+              <div class="diary__sub">
+                <p class="diary__sub-unit js-diary-proofreading-01"></p>
+                <p class="diary__sub-unit js-diary-proofreading-02"></p>
+              </div>
+            </section>          
           </div>
         </section>
         <section class="content__view diary-learning js-diary-view" data-type="learning">
