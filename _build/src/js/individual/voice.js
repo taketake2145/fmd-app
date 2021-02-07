@@ -97,6 +97,8 @@ const voice = (action) => {
                 });                
               }
             }, 1000);
+          } else if (voicer.is_autoplay && voicer.status_autoplay === "all"){  // 全オートプレイ中か判別する
+            changeDiary("prev");
           } else {
             voice('stop');
           }
