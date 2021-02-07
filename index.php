@@ -367,12 +367,12 @@ if ($user_id !== "" || $login_id > 0) {
             <input class="js-form-const-url" type="text" name="" value="<?php echo home_url(); ?>/?user=<?php echo $login_id; ?>" readonly>
             <p>
               <span class="en">
-                Check the "Publish" if you want to share at some SNS.<br>
-                When publish mode, anybody who knows the url can access your diary except the <span class="js-label-list-name">List</span> field.<br>
+                Check the "Publish" if you want to share at some social media.<br>
+                Publish mode: anybody who knows the url can access your diary.
               </span>
               <span class="ja">
                 SNSで共有したいときは、「公開する」を選択してください。<br>
-                公開すると項目「<span class="js-label-list-name">箇条書き</span>」以外のデータを閲覧できるようになります。
+                公開すると誰でも閲覧できるようになります。
               </span>
             </p>
           </div>
@@ -417,7 +417,7 @@ if ($user_id !== "" || $login_id > 0) {
         <form class="dialog__setting-form dialog__form-frame" data-type="label">
           <dl>
             <dt class="dialog__label-title">
-              <span class="en">Setting about the labels</span>
+              <span class="en">Setting the labels</span>
               <span class="ja">表示項目設定</span>
             </dt>
             <dd class="label js-label-lists"></dd>
