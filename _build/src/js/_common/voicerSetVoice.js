@@ -112,9 +112,9 @@ const voicerSetVoice = (func) => {
         voice = '',
         i;
     
-    // 再生中の音声があればストップする（リアルタイム反映ができないため）
-    voicer.is_setting_change = true;
+    // 再生中の音声があればストップする（リアルタイム反映ができないため）    
     if (voicer.is_playing) {
+      voicer.is_setting_change = true;
       playVoice();
     }
     

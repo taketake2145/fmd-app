@@ -19,39 +19,48 @@ const playVoice = (is_prev) => {
       voicer.is_playing = false;    
       playVoice();
     } else if (voicer.is_playing) {  // 再生中か確認する
-      voicer.is_playing = false;
-      _voice_btn.removeClass("animation-blinker");
       
       if (voicer.speech) {
-        
-        // オートプレイ設定中か判別する
-        if (voicer.is_autoplay && !voicer.is_setting_change) {
-          voicer.is_pausing = true;
-          speechSynthesis.pause(voicer.speech);  // 一時停止する
+                
+        // 設定が変更したか確認する
+        if (voicer.is_setting_change) {
+          voicer.is_setting_change = false;
+          speechSynthesis.cancel(voicer.speech);  // 停止する MEMO: 一時停止で設定を変更しても反映されない
+          voicer.speech.volume = voicer.volume;
+          voicer.speech.rate = voicer.rate;
+          voicer.speech.pitch = voicer.pitch;
+          voicer.speech.lang = voicer.lang;
+          voicer.speech.voice = voicer.voice;
+          speechSynthesis.speak(voicer.speech);  // はじめから再生する
+          
         } else {
-          voicer.is_pausing = false;
-          speechSynthesis.cancel(voicer.speech);  // 停止する
-          voicer.speech = null;
+
+          voicer.is_playing = false;
+          _voice_btn.removeClass("animation-blinker");
+
+          // オートプレイ設定中か判別する
+          if (voicer.is_autoplay) {
+            voicer.is_pausing = true;
+            speechSynthesis.pause(voicer.speech);  // 一時停止する
+          } else {
+            voicer.is_pausing = false;
+            speechSynthesis.cancel(voicer.speech);  // 停止する
+            voicer.speech = null;
+          }
         }
       }
 
     } else {
       voicer.is_playing = true;
       _voice_btn.addClass("animation-blinker");
-
+      
       // すでに再生中か判別する
       if (voicer.speech) {
         
-        // 設定か音声が変更しているか判別する
-        if (voicer.is_setting_change) {
-          speechSynthesis.speak(voicer.speech);  // はじめから再生する
-          voicer.is_setting_change = false;
+        if (voicer.is_pausing) {
+          speechSynthesis.resume(voicer.speech);  // 再開する
         } else {
-          if (voicer.is_pausing) {
-            speechSynthesis.resume(voicer.speech);  // 再開する
-          } else {
-            speechSynthesis.speak(voicer.speech);  // はじめから再生する            
-          }
+          speechSynthesis.speak(voicer.speech);  // はじめから再生する            
         }
       } else {
         
