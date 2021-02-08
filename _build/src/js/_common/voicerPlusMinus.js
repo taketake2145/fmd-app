@@ -3,20 +3,23 @@
  *
  * @param {string*} t* volume|rate|pitch
  * @param {string|NULL} v plus|minus|NULL
+ * @param {boolean|NULL} is_default
  * @return {object}
  */
-const voicerPlusMinus = (t, v) => {
+const voicerPlusMinus = (t, v, is_default) => {
   let diff = 0,
       is_plus = true,
       is_minus = true,
       is_changing = (typeof v === "string")? true: false,
       num;
-  
-  
+    
   // タイプに分ける
   switch (t) {
     case "volume":  // 音量を調整する（0〜1）デフォルト:1
-      if (v) {
+      if (is_default && voicer[t] !== 1) {
+        voicer[t] = 1;
+        is_changing = true;
+      } else if (v) {
         diff = (v === "plus")? 3: -3;
         voicer[t] = (voicer[t]*10 + diff)/10;        
       }
@@ -30,7 +33,10 @@ const voicerPlusMinus = (t, v) => {
       }
       break;
     case "rate":  // 速度を調整する（0.1〜10）言語によってレンジは異なる デフォルト:1
-      if (v) {
+      if (is_default && voicer[t] !== 1) {
+        voicer[t] = 1;
+        is_changing = true;
+      } else if (v) {
         diff = (v === "plus")? 3: -3;
         voicer[t] = (voicer[t]*10 + diff)/10;
       }
@@ -45,7 +51,10 @@ const voicerPlusMinus = (t, v) => {
       
       break;
     case "pitch":  // ピッチを調整する（0.0 〜 2.0）言語によってレンジは異なる デフォルト:1
-      if (v) {
+      if (is_default && voicer[t] !== 1) {
+        voicer[t] = 1;
+        is_changing = true;
+      } else if (v) {
         diff = (v === "plus")? 3: -3;
         voicer[t] = (voicer[t]*10 + diff)/10;
       }

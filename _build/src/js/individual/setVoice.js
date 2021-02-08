@@ -92,8 +92,15 @@ const setVoice = () => {
     return false;
   });
 
-  // リンク プラスマイナスタイプ変更
-  $(".js-link-player-label").on(eventstart, function () {
+  // リンク プラスマイナスタイプ変更もしくは初期化にもどす
+  longtap($(".js-link-player-label"), function () {
+    
+    // ダブルタップでデフォルト値に変更する
+    let tgt_type = $(".js-link-player-label .current").attr("data-type");
+    setVoicePlusMinus(tgt_type, $(this).attr("data-type"), true);
+  }, function () {
+    
+    // プラスマイナスタイプを変更する
     let tgt = $(".js-link-player-label .current"),
         tgt_next = tgt.next(),
         tgt_type = "";
@@ -109,6 +116,7 @@ const setVoice = () => {
 
     return false;
   });
+  
   
   // リンク プラスマイナスの値を変更する
   $(".js-link-player[data-type='plus'], .js-link-player[data-type='minus']").on(eventstart, function () {
