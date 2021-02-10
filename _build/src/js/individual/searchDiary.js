@@ -66,7 +66,9 @@ const searchDiary = (is_reset) => {
         IS_CONNECTING = false;
         $(".js-short-message").hide();
         
-        voicer.is_playing = voicer_playing;
+        if (is_shuffle) {
+          voicer.is_playing = voicer_playing;          
+        }
         
         if (DIARY.length === 0) {
           is_zero = true;
