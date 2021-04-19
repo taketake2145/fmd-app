@@ -20,6 +20,9 @@ const saveDiary = () => {
 
     // default なし
   }
+  
+  // 音声を停止する
+  voice("stop");
 
   
   // 新規、もしくは編集の場合

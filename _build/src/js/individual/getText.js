@@ -58,7 +58,7 @@ const getText = (code) => {
         "インターネットに接続できませんでした。もう一度お試しください。": 
         "Try again after because I couldn't connect on web.";        
       break;
-      
+      っと
     // 音声言語、未選択時
     case "select_no_lang":
       str = (LANG === "ja")? 
@@ -69,8 +69,8 @@ const getText = (code) => {
     // 音声ない時
     case "no_voice":
       str = (LANG === "ja")? 
-        "おっと。この端末では音声再生ができないようです。": 
-        "Oops. There is no voice for playing at this device.";
+        "音声再生するための音声が選択されているか、設定を確認してください。": 
+        "Check a voice setting.";
       break;
       
     // ラベルを変更した時

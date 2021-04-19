@@ -9,7 +9,7 @@
     height: 40px;
     margin: 0 10px 0 0;
     border: 1px solid #eee;
-    border-radius: 50%;    
+    border-radius: $btn-radius;  
     
     &.selected {
       img {
@@ -22,7 +22,7 @@
   img {
     width: 100%;
     height: 100%;
-    border-radius: 50px;
+    border-radius: $btn-radius;
     filter: grayscale(100%);
     opacity: 0.2;
   
