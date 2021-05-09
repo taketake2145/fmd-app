@@ -111,8 +111,8 @@ if ($user_id !== "" || $login_id > 0) {
                 </div>
                 <div class="diary-edit__unit js-diary-edit-unit" data-type="ja-summary">
                   <dt class="js-diary-edit-title">
-                    <span class="en">Summary in original language</span>
-                    <span class="ja">原語で話しをまとめる</span>
+                    <span class="en">Summary to translate</span>
+                    <span class="ja">翻訳用に話しをまとめる</span>
                   </dt>
                   <dd>
                     <textarea class="js-diary-ja-summary" name="diary_ja_summary"></textarea>
@@ -120,7 +120,7 @@ if ($user_id !== "" || $login_id > 0) {
                 </div>
                 <div class="diary-edit__unit js-diary-edit-unit" data-type="en-first">
                   <dt class="js-diary-edit-title">
-                    <span class="en">Try to translate it. Stay it if I couldn't.</span>
+                    <span class="en">Translate it. Stay it if I couldn't.</span>
                     <span class="ja">自力で翻訳する（分からないところは原語のまま）</span>
                   </dt>
                   <dd>
@@ -129,7 +129,7 @@ if ($user_id !== "" || $login_id > 0) {
                 </div>
                 <div class="diary-edit__unit js-diary-edit-unit" data-type="en-report">
                   <dt class="js-diary-edit-title">
-                    <span class="en">Re-try to check the unknown words if I have.</span>
+                    <span class="en">Translate it. Check it if I couldn't.</span>
                     <span class="ja">調べながら翻訳する</span>
                   </dt>
                   <dd>
