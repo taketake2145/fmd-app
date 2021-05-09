@@ -1,6 +1,9 @@
 /**
  * 【Bugfix】iPhoneでたまに惰性ロックされてしまうのを無効にする
- * CSSでscroll領域のmin-heightに100% + 1px しておくのがポイント
+ * CSSでscroll領域（tgt）のmin-heightに100% + 1px しておくのがポイント
+ * 画面表示後に実行するのがポイント（display:none; の状態では動作しない）
+ *
+ * @param object* tgt jQueryでの要素指定
  */
 const bugfixScroll = (tgt) => {  
   let h_tgt = tgt.height(),
@@ -12,7 +15,7 @@ const bugfixScroll = (tgt) => {
     tgt.scrollTop(1);      
   }  
   
-  function check_scroll() {
+  function checkScroll() {
     let t = tgt.scrollTop(),
         h = $("> :first-child", tgt).outerHeight(true) - tgt.outerHeight(true);
     
@@ -42,7 +45,7 @@ const bugfixScroll = (tgt) => {
   }
   
   tgt.on("scroll", function(){
-    check_scroll();
+    checkScroll();
   });
 
 }
