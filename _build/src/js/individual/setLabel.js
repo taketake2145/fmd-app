@@ -11,7 +11,6 @@ const setLabel = () => {
   
   if (typeof LS.label === "undefined" || $.isArray(LS.label)) LS.label = {};
   if (typeof LS.label_hide === "undefined" || $.isArray(LS.label_hide)) LS.label_hide = {
-    "date": true,
     "list": true,
     "ja": true,
     "en-first": true,
