@@ -439,7 +439,7 @@ if ($user_id !== "" || $login_id > 0) {
           </div>
           <div>
             <?php if ($login_id > 0): ?>
-            <a class="dialog__nav-link" href="/wp-admin/profile.php">
+            <a class="dialog__nav-link" href="/app/wp-admin/profile.php">
               <span class="en">Account Management</span>
               <span class="ja">アカウント<span class="nowrap">管理</span></span>
             </a>
