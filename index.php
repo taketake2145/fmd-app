@@ -444,7 +444,7 @@ if ($user_id !== "" || $login_id > 0) {
               <span class="ja">アカウント<span class="nowrap">管理</span></span>
             </a>
             <?php else: ?>
-            <a class="dialog__nav-link" href="/">
+            <a class="dialog__nav-link" href="/app/">
               <span class="en">Log in</span>
               <span class="ja">ログイン</span>
             </a>
