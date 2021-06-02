@@ -42,16 +42,18 @@ $nav-common-height: 50px;
 $dialog-setting-bg: #f1f1f1;
 $dialog-search-bg: #fff;
 $color-player: #444;
-$color-link-nav-btn: $color-player;
 $color-comment: #cd9a9d;
 $color-short-message: $color-link;
 
 $color-selected: #fbce00;
+
 $color-text: #849A74;
+$color-text: #2B507A;
 $color-edit: #74949a;
-$color-setting: #cfdad4;
+$color-edit: #105C6A;
+
 $color-setting: mix($color-text, $color-edit);
-$color-setting: rgba($color-setting, 0.5);
+$color-setting: rgba($color-setting, 0.9);
 
 $color-text-bg: #fbfaf5;
 $color-edit-bg: #f5f6fb;
