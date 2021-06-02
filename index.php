@@ -524,7 +524,9 @@ if ($user_id !== "" || $login_id > 0) {
             -->
             <a class="nav__link nav__link--prev js-link-prevnext js-link-diary-more" data-type="prev"><span class="icon-prev"></span></a>
             <a class="nav__link nav__link--next js-link-prevnext" data-type="next"><span class="icon-next"></span></a>
+            <!--
             <a class="nav__link nav__link--check js-link-check"><span class="icon-checkmark"></span></a>
+            -->
           </div>
           <div class="nav__tab-inner">
             <a class="nav__link nav__link--edit-save js-link-save"><span class="icon-download"></span></a>
