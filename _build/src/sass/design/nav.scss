@@ -57,8 +57,7 @@
     
     &--edit {
       background: $color-edit;
-    }
-    
+    }    
   }
   
   &__bar {
@@ -137,6 +136,11 @@
     align-items: center;
     height: 100%;
     
+    &--share {
+      width: 100%;
+    }
+    
+    
     .nav__link {
       margin: 0 10px;
       box-sizing: border-box;
@@ -209,6 +213,10 @@
       span {
         padding: 0 0 0 5px;
       }
+    }
+    
+    &--home {
+      font-size: 28px;
     }
   }
 
