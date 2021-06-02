@@ -24,6 +24,10 @@ html {
   display: none;
 }
 
+.another-user .nav__link-bar[data-type="edit"] {
+  display: none;
+}
+
 body[data-lang="ja"] .en,
 body[data-lang="en"] .ja {
   display: none;
