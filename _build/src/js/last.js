@@ -274,7 +274,7 @@ $(function(){
     // リンク MY DIARY
     $(".js-link-home").on("click", function () {
       $(this).addClass("animation-blinker");
-      location.href = "/";
+      location.href = "/app/";
       return false;
     });
   }
