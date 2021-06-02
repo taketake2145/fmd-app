@@ -21,6 +21,9 @@ if ($user_id === "" && $login_id > 0) {
 $user_type = ($user_id === $login_id && $login_id > 0)? "login-user": "another-user";
 $is_same_id = ($user_id === $login_id && $login_id > 0)? "true": "false";
 
+// POST_IDの指定がある場合は、記事ID
+$diary_id = enc_param("id", $_GET);
+
 // ユーザー指定あり、もしくはログインしているか判別する
 if ($user_id !== "" || $login_id > 0) {
 ?>
@@ -514,24 +517,37 @@ if ($user_id !== "" || $login_id > 0) {
             </a>
           </div>
         </div>
-        <div class="nav__tab js-nav-tab">
-          <div class="nav__tab-inner">
-            <a class="nav__link nav__link--edit js-link-edit possible"><span class="icon-pen"></span></a>
+        
+        <?php if ($diary_id === ''): ?>
+          <div class="nav__tab js-nav-tab">
+            <div class="nav__tab-inner">
+              <a class="nav__link nav__link--edit js-link-edit possible"><span class="icon-pen"></span></a>
+            </div>
+            <div class="nav__tab-inner nav__tab-inner--prevnext">
+              <!-- TODO
+              <a class="nav__link nav__link--voice js-link-voice"><span class="icon-headphones"></span></a>
+              -->
+              <a class="nav__link nav__link--prev js-link-prevnext js-link-diary-more" data-type="prev"><span class="icon-prev"></span></a>
+              <a class="nav__link nav__link--next js-link-prevnext" data-type="next"><span class="icon-next"></span></a>
+              <!--
+              <a class="nav__link nav__link--check js-link-check"><span class="icon-checkmark"></span></a>
+              -->
+            </div>
+            <div class="nav__tab-inner">
+              <a class="nav__link nav__link--edit-save js-link-save"><span class="icon-download"></span></a>
+            </div>
           </div>
-          <div class="nav__tab-inner nav__tab-inner--prevnext">
-            <!-- TODO
-            <a class="nav__link nav__link--voice js-link-voice"><span class="icon-headphones"></span></a>
-            -->
-            <a class="nav__link nav__link--prev js-link-prevnext js-link-diary-more" data-type="prev"><span class="icon-prev"></span></a>
-            <a class="nav__link nav__link--next js-link-prevnext" data-type="next"><span class="icon-next"></span></a>
-            <!--
-            <a class="nav__link nav__link--check js-link-check"><span class="icon-checkmark"></span></a>
-            -->
-          </div>
-          <div class="nav__tab-inner">
-            <a class="nav__link nav__link--edit-save js-link-save"><span class="icon-download"></span></a>
-          </div>
-        </div>
+        <?php else: ?>
+          <div class="nav__tab js-nav-tab">
+
+            <div class="nav__tab-inner nav__tab-inner--share">
+
+              <a class="nav__link nav__link--home active" href="/app/?user=<?php echo $user_id; ?>"><span class="icon-user"></span></a>
+
+            </div>
+
+          </div>        
+        <?php endif; ?>
       </div>
       
       <div class="nav__inner nav__inner--edit js-nav-new">
@@ -565,7 +581,9 @@ if ($user_id !== "" || $login_id > 0) {
     <nav class="nav-common js-nav-common">
       <a class="nav-common__link nav-common__link--left js-link-setting"><span class="icon-cog"></span></a>
       <a class="nav-common__link nav-common__link--left js-link-edit"><span class="icon-close"></span></a>
+      <?php if ($diary_id === ''): ?>
       <a class="nav-common__link nav-common__link--right js-link-search"><span class="icon-search"></span></a>
+      <?php endif; ?>
     </nav>
     
     <nav class="nav-common js-nav-dialog">
