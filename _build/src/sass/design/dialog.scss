@@ -57,6 +57,16 @@
       margin: 0 10px 0 0;
     }
   }
+  
+  &__nav-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    a + a {
+      margin: 0 0 0 10px;
+    }
+  }
 }
 
 .another-user .dialog__nav {
