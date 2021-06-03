@@ -171,6 +171,7 @@ $(function(){
         $(".js-link-search-shuffle").removeClass("selected");
       }
       $(".js-form-search [name='q']").val("");
+      searchDiary();
       return false;
     });
 
