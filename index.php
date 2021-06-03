@@ -671,6 +671,10 @@ if ($user_id !== "" || $login_id > 0) {
 </html>
 <?php
 } else {
-  header("Location: ".home_url()."/signin/");
+  $redirect_param = '';
+  if (is_lang_priority_ja()) {
+    $redirect_param = '?wp_lang=ja';
+  }
+  header("Location: ".home_url()."/signin/".$redirect_param);
 }
 ?>

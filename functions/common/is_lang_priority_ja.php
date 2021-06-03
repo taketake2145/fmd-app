@@ -6,6 +6,11 @@
  * return boolean
  */
 function is_lang_priority_ja() {
-    $priority_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
-    return (preg_match('/^ja/i', $priority_language));
+  $is_ja = false;
+  $priority_language = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+  if (preg_match('/^ja/i', $priority_language)) {
+    $is_ja = true;
+  }
+  return $is_ja;
 }
+
