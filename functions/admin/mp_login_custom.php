@@ -5,7 +5,7 @@
  */
 function mp_login_custom() {
   echo '<script>let ASSETS_PATH = "'.get_stylesheet_directory_uri().'/assets";</script>';
-	wp_enqueue_style('custom-css', get_stylesheet_directory_uri().'/assets/admin/login.css');
+	wp_enqueue_style('custom-css', get_stylesheet_directory_uri().'/assets/admin/login.css?1');
   wp_enqueue_script('custom-jquery', get_template_directory_uri().'/assets/admin/jquery-3.5.1.min.js');
   wp_enqueue_script('custom-login', get_template_directory_uri().'/assets/admin/login.js');
   

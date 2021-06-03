@@ -62,3 +62,8 @@ body,
     padding-top: 50px;
   }
 }
+
+
+.message.register {
+  display: none;
+}

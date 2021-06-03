@@ -24,6 +24,18 @@ $is_same_id = ($user_id === $login_id && $login_id > 0)? "true": "false";
 // POST_IDの指定がある場合は、記事ID
 $diary_id = enc_param("id", $_GET);
 
+// 閲覧タイプ（3種類）
+switch (true) {
+  case $is_same_id === "true":    // login and my diary
+    $user_type = 1;
+    break;
+  case is_user_logged_in():   // login but other's diary
+    $user_type = 2;
+    break;
+  default:    // logout and other's diary
+    $user_type = 3;
+}
+
 // ユーザー指定あり、もしくはログインしているか判別する
 if ($user_id !== "" || $login_id > 0) {
 ?>
@@ -347,40 +359,43 @@ if ($user_id !== "" || $login_id > 0) {
           </dl>
         </form>
         
-        <form class="dialog__setting-form dialog__form-frame" data-type="publish-status">
-          <dl class="dl-flex">
-            <dt>
-              <span class="en">Status</span>
-              <span class="ja">公開設定</span>
-            </dt>
-            <dd>
-              <label>
-                <input type="radio" name="publish_status" value="publish">
-                <span class="en">Publish</span>
-                <span class="ja">公開する</span>
-              </label>
-              <label>
-                <input type="radio" name="publish_status" value="private">
-                <span class="en">Private</span>
-                <span class="ja">公開しない</span>
-              </label>
-            </dd>
-          </dl>
-          <div class="dialog__publish-status-ex js-explain-publish-status">
-            <input class="js-form-const-url" type="text" name="" value="<?php echo home_url(); ?>/?user=<?php echo $login_id; ?>" readonly>
-            <p>
-              <span class="en">
-                Check the "Publish" if you want to share at some social media.<br>
-                Publish mode: anybody who knows the url can access your diary.
-              </span>
-              <span class="ja">
-                SNSで共有したいときは、「公開する」を選択してください。<br>
-                公開すると誰でも閲覧できるようになります。
-              </span>
-            </p>
-          </div>
-        </form>
+        <?php if ($user_type === 1): ?>
+          <form class="dialog__setting-form dialog__form-frame" data-type="publish-status">
+            <dl class="dl-flex">
+              <dt>
+                <span class="en">Status</span>
+                <span class="ja">公開設定</span>
+              </dt>
+              <dd>
+                <label>
+                  <input type="radio" name="publish_status" value="publish">
+                  <span class="en">Publish</span>
+                  <span class="ja">公開する</span>
+                </label>
+                <label>
+                  <input type="radio" name="publish_status" value="private">
+                  <span class="en">Private</span>
+                  <span class="ja">公開しない</span>
+                </label>
+              </dd>
+            </dl>
+            <div class="dialog__publish-status-ex js-explain-publish-status">
+              <input class="js-form-const-url" type="text" name="" value="<?php echo home_url(); ?>/?user=<?php echo $login_id; ?>" readonly>
+              <p>
+                <span class="en">
+                  Check the "Publish" if you want to share at some social media.<br>
+                  Publish mode: anybody who knows the url can access your diary.
+                </span>
+                <span class="ja">
+                  SNSで共有したいときは、「公開する」を選択してください。<br>
+                  公開すると誰でも閲覧できるようになります。
+                </span>
+              </p>
+            </div>
+          </form>
 
+        <?php endif; ?>      
+        
         <form class="dialog__setting-form dialog__form-frame js-form-speech" data-type="speech">
           <dl>
             <div class="dl-flex">
@@ -416,44 +431,70 @@ if ($user_id !== "" || $login_id > 0) {
             </div>
           </dl>
         </form>
-
-        <form class="dialog__setting-form dialog__form-frame" data-type="label">
-          <dl>
-            <dt class="dialog__label-title">
-              <span class="en">Setting the labels</span>
-              <span class="ja">表示項目設定</span>
-            </dt>
-            <dd class="label js-label-lists"></dd>
-            <dd class="dialog__label-reset-area">
-              <a class="js-link-label-reset">
-                <span class="en">Reset the label settings</span>
-                <span class="ja">表示項目をリセットする</span>
-              </a>
-            </dd>
-          </dl>
-        </form>
         
-        <div class="dialog__nav">
-          <div class="dialog__nav-login">
-            <a class="dialog__nav-link js-link-reset-all-setting">
-              <span class="en">Reset all setting</span>
-              <span class="ja">すべての設定を<span class="nowrap">初期化する</span></span>
-            </a>
+        
+        <?php if ($user_type === 1): ?>
+          <form class="dialog__setting-form dialog__form-frame" data-type="label">
+            <dl>
+              <dt class="dialog__label-title">
+                <span class="en">Setting the labels</span>
+                <span class="ja">表示項目設定</span>
+              </dt>
+              <dd class="label js-label-lists"></dd>
+              <dd class="dialog__label-reset-area">
+                <a class="js-link-label-reset">
+                  <span class="en">Reset the label settings</span>
+                  <span class="ja">表示項目をリセットする</span>
+                </a>
+              </dd>
+            </dl>
+          </form>
+        <?php endif; ?>      
+
+        
+        <?php if ($user_type === 1): ?>
+          <div class="dialog__nav">
+            <div class="dialog__nav-login">
+              <a class="dialog__nav-link js-link-reset-all-setting">
+                <span class="en">Reset all setting</span>
+                <span class="ja">すべての設定を<span class="nowrap">初期化する</span></span>
+              </a>
+            </div>
+            <div>
+              <?php if ($login_id > 0): ?>
+              <a class="dialog__nav-link" href="/app/wp-admin/profile.php">
+                <span class="en">Account Management</span>
+                <span class="ja">アカウント<span class="nowrap">管理</span></span>
+              </a>
+              <?php else: ?>
+              <a class="dialog__nav-link" href="/app/">
+                <span class="en">Log in</span>
+                <span class="ja">ログイン</span>
+              </a>
+              <?php endif; ?>
+            </div>
           </div>
-          <div>
-            <?php if ($login_id > 0): ?>
-            <a class="dialog__nav-link" href="/app/wp-admin/profile.php">
-              <span class="en">Account Management</span>
-              <span class="ja">アカウント<span class="nowrap">管理</span></span>
-            </a>
-            <?php else: ?>
-            <a class="dialog__nav-link" href="/app/">
-              <span class="en">Log in</span>
-              <span class="ja">ログイン</span>
-            </a>
-            <?php endif; ?>
+        <?php elseif ($user_type === 2): ?>
+          <div class="dialog__nav">
+            <div class="dialog__nav-flex en">
+              <a class="dialog__nav-link btn btn--02" href="/app/">My page</a>
+            </div>
+            <div class="dialog__nav-flex ja">
+              <a class="dialog__nav-link btn btn--02" href="/app/">マイページ</a>
+            </div>
           </div>
-        </div>
+        <?php elseif ($user_type === 3): ?>
+          <div class="dialog__nav">
+            <div class="dialog__nav-flex en">
+              <a class="dialog__nav-link btn btn--01" href="/app/signin">Log in</a>
+              <a class="dialog__nav-link btn btn--02" href="/app/signin?action=register">Register</a>
+            </div>
+            <div class="dialog__nav-flex ja">
+              <a class="dialog__nav-link btn btn--01" href="/app/signin/?wp_lang=ja">ログイン</a>
+              <a class="dialog__nav-link btn btn--02" href="/app/signin?action=register&wp_lang=ja">登録</a>
+            </div>
+          </div>
+        <?php endif; ?>
         
         
         <section class="js-common-nav"></section>
@@ -511,30 +552,34 @@ if ($user_id !== "" || $login_id > 0) {
               <span class="en">Share</span>
               <span class="ja">共有</span>
             </a>
-            <a class="nav__link-bar nav__link-bar--spacing-1 js-link-diary-nav" data-type="edit">
-              <span class="en">Edit</span>
-              <span class="ja">編集</span>
-            </a>
+            <?php if ($user_type === 1): ?>
+              <a class="nav__link-bar nav__link-bar--spacing-1 js-link-diary-nav" data-type="edit">
+                <span class="en">Edit</span>
+                <span class="ja">編集</span>
+              </a>
+            <?php endif; ?>
           </div>
         </div>
         
         <?php if ($diary_id === ''): ?>
           <div class="nav__tab js-nav-tab">
             <div class="nav__tab-inner">
-              <a class="nav__link nav__link--edit js-link-edit possible"><span class="icon-pen"></span></a>
+              <?php if ($user_type === 1): ?>
+                <a class="nav__link nav__link--edit js-link-edit possible"><span class="icon-pen"></span></a>
+              <?php endif; ?>
             </div>
             <div class="nav__tab-inner nav__tab-inner--prevnext">
               <!-- TODO
               <a class="nav__link nav__link--voice js-link-voice"><span class="icon-headphones"></span></a>
+              <a class="nav__link nav__link--check js-link-check"><span class="icon-checkmark"></span></a>
               -->
               <a class="nav__link nav__link--prev js-link-prevnext js-link-diary-more" data-type="prev"><span class="icon-prev"></span></a>
               <a class="nav__link nav__link--next js-link-prevnext" data-type="next"><span class="icon-next"></span></a>
-              <!--
-              <a class="nav__link nav__link--check js-link-check"><span class="icon-checkmark"></span></a>
-              -->
             </div>
             <div class="nav__tab-inner">
-              <a class="nav__link nav__link--edit-save js-link-save"><span class="icon-download"></span></a>
+              <?php if ($user_type === 1): ?>
+                <a class="nav__link nav__link--edit-save js-link-save"><span class="icon-download"></span></a>
+              <?php endif; ?>
             </div>
           </div>
         <?php else: ?>
@@ -671,6 +716,10 @@ if ($user_id !== "" || $login_id > 0) {
 </html>
 <?php
 } else {
-  header("Location: ".home_url()."/signin/");
+  $redirect_param = '';
+  if (is_lang_priority_ja()) {
+    $redirect_param = '?wp_lang=ja';
+  }
+  header("Location: ".home_url()."/signin/".$redirect_param);
 }
 ?>
