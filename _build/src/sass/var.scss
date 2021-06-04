@@ -45,12 +45,13 @@ $color-player: #444;
 $color-comment: #cd9a9d;
 $color-short-message: $color-link;
 
-$color-selected: #fbce00;
+$color-selected-text: #fbce00;
+$color-selected-edit: #125E6C;
 
 $color-text: #849A74;
 $color-text: #2B507A;
 $color-edit: #74949a;
-$color-edit: #105C6A;
+$color-edit: #F0A93F;
 
 $color-setting: mix($color-text, $color-edit);
 $color-setting: rgba($color-setting, 0.9);
